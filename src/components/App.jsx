@@ -10,23 +10,21 @@ export function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const handleClickButton = e => {
-    const option = e.target.name;
+  const handleClickButton = type => {
 
-    switch (option) {
+    switch (type) {
       case 'good':
-        setGood(state => state + 1);
+        setGood(prevState => prevState + 1);
         break;
       case 'neutral':
-        setNeutral(state => state + 1);
+        setNeutral(prevState => prevState + 1);
         break;
       case 'bad':
-        setBad(state => state + 1);
+        setBad(prevState => prevState + 1);
         break;
 
       default:
-        console.log('Error e.target.name = ', e.target.name);
-        break;
+        throw new Error();
     }
   };
 
@@ -47,7 +45,6 @@ export function App() {
     <div className={css.container}>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
             onLeaveFeedback={handleClickButton}
           />
         </Section>

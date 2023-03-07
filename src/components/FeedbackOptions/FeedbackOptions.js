@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
-function FeedbackOptions({ options, onLeaveFeedback }) {
+
+const options = ['good', 'neutral', 'bad'];
+
+function FeedbackOptions({ onLeaveFeedback }) {
   return (
     <ul className={css.list}>
       {options.map(option => {
@@ -11,7 +14,7 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
               className={css.button}
               type="button"
               name={option}
-              onClick={onLeaveFeedback}
+              onClick={() => onLeaveFeedback(option)}
             >
               {option}
             </button>
